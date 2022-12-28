@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 3
+  template:
+    metadata:
+      name: nginx-2
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+
+# When you create the replicaset with the above configuration, we will show we have 3 pods successfully created and running.
+# However, when you delete a specific pod (kubectl delete pod <podname>), a new pod will automatically be created with a new name.
+# The ReplicaSet is MANAGING our pods and ensuring we meet our minimum requirement as specified in our file.
+
+# What will happen if we create a POD outside of the ReplicaSet with the same labels (app: myapp)?
+# We use the kubectl create -f nginx.yaml command and a pod is created.
+# When we run the kubectl get pods command now, we see the 4th pod is listed, but with a "terminating" status.
+# The ReplicaSet is automatically terminating the new POD as it is not our "desired state". 
+
+# We can edit/update a replicaset using the kubectl edit replicaset <replicaset_name> and update how many replicas we want.
+# However, the file that opens is a temp file and any changes we make are immediately updated within our cluster.

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    tier: frontend
+    app: nginx
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 3
+  template:
+    metadata:
+      name: nginx-2
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+
+# Create the deployment using the kubectl create -f deployment.yaml command.
+# Run kubectl get deployments command to show we have one deployment.
+# Check the pods by running the kubectl get pods command and we see 3 pods in the running state.
+# Run kubectl describe deployment myapp-deployment command to see detailed information of our deployment.

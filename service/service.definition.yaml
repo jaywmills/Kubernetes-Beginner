@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30004 #ports between 30000 and 32767
+  selector:
+    app: myapp
+
+# create service using the command: kubectl create -f service.definition.yaml 
+# kubectl get service command shows us our newly created service with the type showing NodePort, the Cluster-IP created for the service within the cluster network, the port to access our application.

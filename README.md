@@ -1,1 +1,1 @@
-Personal project working with Kubernetes as a beginner. We explore the yaml files and what parameters are required for creating pods, replicasets, deployments, and services. 
+Personal project working with Kubernetes as a beginner. We explore the yaml files and what is required for creating pods, replicasets, deployments, and services. In this example, each file displays instructions along wiht additional comments for documentation on what to expect when running kubectl commands.

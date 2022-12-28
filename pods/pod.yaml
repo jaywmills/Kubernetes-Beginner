@@ -10,4 +10,4 @@ spec:
   - name: nginx
     image: nginx
 
-# Used the “kubectl apply -f pod.yaml” and we return a value of “pod/nginx created”.
+# Used the “kubectl create -f pod.yaml” and we return a value of “pod/nginx created”.
